@@ -1,240 +1,146 @@
-// CanvasContext2D.cs
-// Script#/Libraries/Web
-// Copyright (c) Nikhil Kothari.
-// Copyright (c) Microsoft Corporation.
-// This source code is subject to terms and conditions of the Microsoft 
-// Public License. A copy of the license can be found in License.txt.
-//
-
-using System;
 using System.Runtime.CompilerServices;
-using System.Html;
+using System.Html.Media.Graphics;
+using System.Interop.OpenGL;
+namespace System.Html.Media.Graphics
+{
+    // why doubles when spec calls for floats? we should try matching to the specs, as defined.
 
-namespace System.Html.Media.Graphics {
+    [Imported, IgnoreNamespace]
+    public class CanvasContext2D : CanvasContext
+    {
+        public void Arc(float x, float y, float radius, float startAngle, float endAngle, bool anticlockwise) { }
+        public void ArcTo(float x1, float y1, float x2, float y2, float radius) { }
+        public void BeginPath() { }
+        public void BezierCurveTo(float cp1x, float cp1y, float cp2x, float cp2y, float x, float y) { }
+        private void ClearRect(float x, float y, float w, float h) { }
+        public void Clip() { }
+        public void ClosePath() { }
+        public ImageData CreateImageData(ImageData imagedata) { return null; }
+        public ImageData CreateImageData(float sw, float sh) { return null; }
+        public Gradient CreateLinearGradient(float x0, float y0, float x1, float y1) { return null; }
+        public Pattern CreatePattern(CanvasElement canvas, string repetition) { return null; }
+        public Pattern CreatePattern(ImageElement image, string repetition) { return null; }
+        public Gradient CreateRadialGradient(float x0, float y0, float r0, float x1, float y1, float r1) { return null; }
+        public void DrawImage(CanvasElement image, float dx, float dy) { }
+        public void DrawImage(ImageElement image, float dx, float dy) { }
+        public void DrawImage(CanvasElement image, float dx, float dy, float dw, float dh) { }
+        public void DrawImage(ImageElement image, float dx, float dy, float dw, float dh) { }
+        public void DrawImage(CanvasElement image, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) { }
+        public void DrawImage(ImageElement image, float sx, float sy, float sw, float sh, float dx, float dy, float dw, float dh) { }
+        public void Fill() { }
+        //private void FillRect(float x, float y, float w, float h) { }
+        public void FillText(string text, float x, float y) { }
+        public void FillText(string text, float x, float y, float maxWidth) { }
+        public ImageData GetImageData(float sx, float sy, float sw, float sh) { return null; }
+        public bool IsPointInPath(float x, float y) { return false; }
+        public void LineTo(float x, float y) { }
+        public TextMetrics MeasureText(string text) { return null; }
+        public void MoveTo(float x, float y) { }
+        public void PutImageData(ImageData imagedata, float dx, float dy) { }
+        public void PutImageData(ImageData imagedata, float dx, float dy, float dirtyX, float dirtyY, float dirtyWidth, float dirtyHeight) { }
+        public void QuadraticCurveTo(float cpx, float cpy, float x, float y) { }
+        public void Rect(float x, float y, float w, float h) { }
+        public void Restore() { }
+        public void Rotate(float angle) { }
+        public void Save() { }
+        public void Scale(float x, float y) { }
+        public void SetTransform(float m11, float m12, float m21, float m22, float dx, float dy) { }
+        public void Stroke() { }
+        //private void StrokeRect(float x, float y, float w, float h) { }
+        public void StrokeText(string text, float x, float y) { }
+        public void StrokeText(string text, float x, float y, float maxWidth) { }
+        public void Transform(float m11, float m12, float m21, float m22, float dx, float dy) { }
+        public void Translate(float x, float y) { }
 
-    [IgnoreNamespace]
-    [Imported]
-    public sealed class CanvasContext2D : CanvasContext {
-
-        private CanvasContext2D() {
+        [IntrinsicProperty, ScriptName("globalAlpha")]
+        public float Alpha
+        {
+            get { return 0; }
+            set { }
         }
 
-        [ScriptName("globalAlpha")]
-        [IntrinsicProperty]
-        public double Alpha {
-            get;
-            set;
-        }
-
-        [ScriptName("globalCompositeOperation")]
-        [IntrinsicProperty]
-        public CompositeOperation CompositeOperation {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public object FillStyle {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public string Font {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public LineCap LineCap {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public LineJoin LineJoin {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public double LineWidth {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public int MiterLimit {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public double ShadowBlur {
-            get;
-            set;
-        }
-
-        [IntrinsicProperty]
-        public string ShadowColor {
-            get;
-            set;
+        [IntrinsicProperty, ScriptName("globalCompositeOperation")]
+        public CompositeOperation CompositeOperation
+        {
+            get { return 0; }
+            set { }
         }
 
         [IntrinsicProperty]
-        public double ShadowOffsetX {
-            get;
-            set;
+        public object FillStyle
+        {
+            get { return null; }
+            set { }
         }
 
         [IntrinsicProperty]
-        public double ShadowOffsetY {
-            get;
-            set;
+        public string Font
+        {
+            get { return null; }
+            set { }
         }
 
         [IntrinsicProperty]
-        public object StrokeStyle {
-            get;
-            set;
+        public LineCap LineCap
+        {
+            get { return 0; }
+            set { }
         }
 
-        public void Arc(double x, double y, double radius, double startAngle, double endAngle, bool anticlockwise) {
+        [IntrinsicProperty]
+        public LineJoin LineJoin
+        {
+            get { return 0; }
+            set { }
         }
 
-        public void ArcTo(double x1, double y1, double x2, double y2, double radius) {
+        [IntrinsicProperty]
+        public float LineWidth
+        {
+            get { return 0; }
+            set { }
         }
 
-        public void BeginPath() {
+        [IntrinsicProperty]
+        public int MiterLimit
+        {
+            get { return 0; }
+            set { }
         }
 
-        public void BezierCurveTo(double cp1x, double cp1y, double cp2x, double cp2y, double x, double y) {
+        [IntrinsicProperty]
+        public float ShadowBlur
+        {
+            get { return 0; }
+            set { }
         }
 
-        public void ClearRect(double x, double y, double w, double h) {
+        [IntrinsicProperty]
+        public string ShadowColor
+        {
+            get { return null; }
+            set { }
         }
 
-        public void Clip() {
+        [IntrinsicProperty]
+        public float ShadowOffsetX
+        {
+            get { return 0; }
+            set { }
         }
 
-        public void ClosePath() {
+        [IntrinsicProperty]
+        public float ShadowOffsetY
+        {
+            get { return 0; }
+            set { }
         }
 
-        public Gradient CreateLinearGradient(double x0, double y0, double x1, double y1) {
-            return null;
-        }
-
-        public Gradient CreateRadialGradient(double x0, double y0, double r0, double x1, double y1, double r1) {
-            return null;
-        }
-
-        public ImageData CreateImageData(double sw, double sh) {
-            return null;
-        }
-
-        public ImageData CreateImageData(ImageData imagedata) {
-            return null;
-        }
-
-        public Pattern CreatePattern(CanvasElement canvas, string repetition) {
-            return null;
-        }
-
-        public Pattern CreatePattern(ImageElement image, string repetition) {
-            return null;
-        }
-
-        public void DrawImage(ImageElement image, double dx, double dy) {
-        }
-
-        public void DrawImage(ImageElement image, double dx, double dy, double dw, double dh) {
-        }
-
-        public void DrawImage(ImageElement image, double sx, double sy, double sw, double sh, double dx, double dy, double dw, double dh) {
-        }
-
-        public void DrawImage(CanvasElement image, double dx, double dy) {
-        }
-
-        public void DrawImage(CanvasElement image, double dx, double dy, double dw, double dh) {
-        }
-
-        public void DrawImage(CanvasElement image, double sx, double sy, double sw, double sh, double dx, double dy, double dw, double dh) {
-        }
-
-        public void Fill() {
-        }
-
-        public void FillRect(double x, double y, double w, double h) {
-        }
-
-        public void FillText(string text, double x, double y) {
-        }
-
-        public void FillText(string text, double x, double y, double maxWidth) {
-        }
-
-        public ImageData GetImageData(double sx, double sy, double sw, double sh) {
-            return null;
-        }
-
-        public bool IsPointInPath(double x, double y) {
-            return false;
-        }
-
-        public void LineTo(double x, double y) {
-        }
-
-        public TextMetrics MeasureText(string text) {
-            return null;
-        }
-
-        public void MoveTo(double x, double y) {
-        }
-
-        public void PutImageData(ImageData imagedata, double dx, double dy) {
-        }
-
-        public void PutImageData(ImageData imagedata, double dx, double dy, double dirtyX, double dirtyY, double dirtyWidth, double dirtyHeight) {
-        }
-
-        public void QuadraticCurveTo(double cpx, double cpy, double x, double y) {
-        }
-
-        public void Rect(double x, double y, double w, double h) {
-        }
-
-        public void Restore() {
-        }
-
-        public void Rotate(double angle) {
-        }
-
-        public void Save() {
-        }
-
-        public void Scale(double x, double y) {
-        }
-
-        public void SetTransform(double m11, double m12, double m21, double m22, double dx, double dy) {
-        }
-
-        public void Stroke() {
-        }
-
-        public void StrokeRect(double x, double y, double w, double h) {
-        }
-
-        public void StrokeText(string text, double x, double y) {
-        }
-
-        public void StrokeText(string text, double x, double y, double maxWidth) {
-        }
-
-        public void Transform(double m11, double m12, double m21, double m22, double dx, double dy) {
-        }
-
-        public void Translate(double x, double y) {
+        [IntrinsicProperty]
+        public object StrokeStyle
+        {
+            get { return null; }
+            set { }
         }
     }
 }

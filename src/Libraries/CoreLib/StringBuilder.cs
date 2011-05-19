@@ -16,6 +16,14 @@ namespace System {
     [Imported]
     [ScriptNamespace("ss")]
     public sealed class StringBuilder {
+        static StringBuilder()
+        {
+            Script.Literal(@"ss.StringBuilder.prototype.baseAppend = ss.StringBuilder.prototype.append;
+    ss.StringBuilder.prototype.baseClear = ss.StringBuilder.prototype.clear;
+    ss.StringBuilder.prototype.append = function(s) { if (!ss.isNullOrUndefined(s)) this.length += s.length; return this.baseAppend(s); }
+    ss.StringBuilder.prototype.clear = function(s) { this.length = 0; return this.baseClear(); }
+    ss.StringBuilder.prototype.length = 0");
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StringBuilder"/> class.
@@ -167,6 +175,11 @@ namespace System {
         /// </returns>
         public string ToString(string separator) {
             return null;
+        }
+
+        public int Length {
+            get { return 0; }
+            set { }
         }
     }
 }

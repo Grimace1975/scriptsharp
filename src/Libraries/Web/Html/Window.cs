@@ -31,6 +31,15 @@ namespace System.Html {
             }
         }
 
+        public static string Atob(string s) {
+            return null;
+        }
+
+        public static string Btoa(string s) { 
+            return null;
+        }
+
+
         /// <summary>
         /// IE only.
         /// </summary>

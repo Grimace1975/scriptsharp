@@ -23,7 +23,7 @@
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\..\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\..\bin\Debug\Script.Web.xml</DocumentationFile>
@@ -41,6 +41,9 @@
     <NoWarn>1591, 0661, 0660, 1684</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Html+Net\CloseEventArgs.cs" />
+    <Compile Include="Html+Net\MessageEventArgs.cs" />
+    <Compile Include="Html+Net\WebSocket.cs" />
     <Compile Include="Html\ActiveXObject.cs" />
     <Compile Include="Html\AnchorElement.cs" />
     <Compile Include="Html\AreaElement.cs" />
@@ -49,6 +52,7 @@
     <Compile Include="Html\CanvasElement.cs" />
     <Compile Include="Html\GestureEvent.cs" />
     <Compile Include="Html\CustomEvent.cs" />
+    <Compile Include="Html\LocalStorage.cs" />
     <Compile Include="Html\Media\Graphics\Rendering.cs" />
     <Compile Include="Html\MutableEvent.cs" />
     <Compile Include="Html\TouchInfo.cs" />
@@ -129,8 +133,34 @@
     <Compile Include="Html\Media\Filters\VisualFilterCollection.cs" />
     <Compile Include="Html\Media\Filters\VisualTransition.cs" />
     <Compile Include="Html\Media\Filters\VisualTransitionState.cs" />
+    <Compile Include="Html\VideoElement.cs" />
     <Compile Include="Html\Window.cs" />
     <Compile Include="Html\WindowInstance.cs" />
+    <Compile Include="Interop\OpenGL\GLES20.cs" />
+    <Compile Include="Interop\OpenGL\WebGLActiveInfo.cs" />
+    <Compile Include="Interop\OpenGL\WebGLBuffer.cs" />
+    <Compile Include="Interop\OpenGL\WebGLContextAttributes.cs" />
+    <Compile Include="Interop\OpenGL\WebGLFramebuffer.cs" />
+    <Compile Include="Interop\OpenGL\WebGLObject.cs" />
+    <Compile Include="Interop\OpenGL\WebGLProgram.cs" />
+    <Compile Include="Interop\OpenGL\WebGLRenderbuffer.cs" />
+    <Compile Include="Interop\OpenGL\WebGLRenderingContext.cs" />
+    <Compile Include="Interop\OpenGL\WebGLShader.cs" />
+    <Compile Include="Interop\OpenGL\WebGLTexture.cs" />
+    <Compile Include="Interop\OpenGL\WebGLUniformLocation.cs" />
+    <Compile Include="IO\Directory.cs" />
+    <Compile Include="IO\File.cs" />
+    <Compile Include="IO\FileAccess.cs" />
+    <Compile Include="IO\FileInfo.cs" />
+    <Compile Include="IO\FileInfoSearchPredicate.cs" />
+    <Compile Include="IO\FileMode.cs" />
+    <Compile Include="IO\FileStream.cs" />
+    <Compile Include="IO\MemoryStream.cs" />
+    <Compile Include="IO\Path.cs" />
+    <Compile Include="IO\SE.cs" />
+    <Compile Include="IO\Stream.cs" />
+    <Compile Include="JSArrayEx.cs" />
+    <Compile Include="JSConvert.cs" />
     <Compile Include="Net\HttpVerb.cs" />
     <Compile Include="Net\ReadyState.cs" />
     <Compile Include="Net\XmlHttpRequest.cs" />
